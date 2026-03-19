@@ -11,11 +11,30 @@ class SkyScreen extends StatefulWidget {
 }
 
 class _SkyScreenState extends State<SkyScreen> {
-  CelestialObject? _selected;
   Offset? _tapPosition;
 
   void _onObjectTapped(CelestialObject obj, Offset pos) {
-    setState(() => _selected = obj);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierColor: Colors.transparent,
+        builder: (_) => _ObjectPopup(obj: obj),
+      );
+    });
+  }
+
+  void _onConstellationTapped(Constellation constellation, Offset pos) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      showDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierColor: Colors.transparent,
+        builder: (_) => _ConstellationPopup(constellation: constellation),
+      );
+    });
   }
 
   @override
@@ -38,6 +57,7 @@ class _SkyScreenState extends State<SkyScreen> {
               painter: SkyPainter(
                 provider: sky,
                 onObjectTapped: _onObjectTapped,
+                onConstellationTapped: _onConstellationTapped,
                 tapPosition: _tapPosition,
               ),
               child: const SizedBox.expand(),
@@ -51,17 +71,7 @@ class _SkyScreenState extends State<SkyScreen> {
             child: _HudOverlay(sky: sky),
           ),
 
-          // Object info card
-          if (_selected != null)
-            Positioned(
-              bottom: 40,
-              left: 20,
-              right: 20,
-              child: _InfoCard(
-                obj: _selected!,
-                onClose: () => setState(() => _selected = null),
-              ),
-            ),
+
         ],
       ),
     );
@@ -102,46 +112,81 @@ class _HudOverlay extends StatelessWidget {
   }
 }
 
-class _InfoCard extends StatelessWidget {
-  final CelestialObject obj;
-  final VoidCallback onClose;
-  const _InfoCard({required this.obj, required this.onClose});
+class _ConstellationPopup extends StatelessWidget {
+  final Constellation constellation;
+  const _ConstellationPopup({required this.constellation});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF0d0d2b).withOpacity(0.95),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white24),
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: const Color(0xFF0d0d2b).withOpacity(0.95),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.white24),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('✦', style: TextStyle(fontSize: 36, color: Colors.lightBlueAccent)),
+            const SizedBox(height: 8),
+            Text(constellation.name,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Text(constellation.description,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white70, fontSize: 14)),
+            const SizedBox(height: 6),
+            Text('${constellation.stars.length} stars',
+                style: const TextStyle(color: Colors.white38, fontSize: 12)),
+          ],
+        ),
       ),
-      child: Row(
-        children: [
-          Text(obj.symbol, style: const TextStyle(fontSize: 36)),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(obj.name,
-                    style: const TextStyle(color: Colors.white, fontSize: 18,
-                        fontWeight: FontWeight.bold)),
-                const SizedBox(height: 4),
-                Text(obj.description,
-                    style: const TextStyle(color: Colors.white70, fontSize: 13)),
-                const SizedBox(height: 4),
-                Text('Mass: ${obj.mass}',
-                    style: const TextStyle(color: Colors.white38, fontSize: 11)),
-              ],
-            ),
-          ),
-          IconButton(
-            icon: const Icon(Icons.close, color: Colors.white38),
-            onPressed: onClose,
-          ),
-        ],
+    );
+  }
+}
+
+class _ObjectPopup extends StatelessWidget {
+  final CelestialObject obj;
+  const _ObjectPopup({required this.obj});
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: const Color(0xFF0d0d2b).withOpacity(0.95),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Colors.white24),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(obj.symbol, style: const TextStyle(fontSize: 42)),
+            const SizedBox(height: 8),
+            Text(obj.name,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Text(obj.description,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white70, fontSize: 14)),
+            const SizedBox(height: 6),
+            Text('Mass: ${obj.mass}',
+                style: const TextStyle(color: Colors.white38, fontSize: 12)),
+          ],
+        ),
       ),
     );
   }

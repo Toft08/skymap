@@ -5,16 +5,24 @@ import '../providers/sky_provider.dart';
 class SkyPainter extends CustomPainter {
   final SkyProvider provider;
   final Function(CelestialObject obj, Offset pos) onObjectTapped;
+  final Function(Constellation constellation, Offset pos) onConstellationTapped;
   final Offset? tapPosition;
 
-  SkyPainter({required this.provider, required this.onObjectTapped, this.tapPosition});
+  SkyPainter({
+    required this.provider,
+    required this.onObjectTapped,
+    required this.onConstellationTapped,
+    this.tapPosition,
+  });
 
   // Store hit targets for tap detection
   final List<MapEntry<CelestialObject, Offset>> _hitTargets = [];
+  final List<MapEntry<Constellation, Offset>> _constellationHitTargets = [];
 
   @override
   void paint(Canvas canvas, Size size) {
     _hitTargets.clear();
+    _constellationHitTargets.clear();
     _drawBackground(canvas, size);
     _drawConstellations(canvas, size);
     _drawObjects(canvas, size);
@@ -24,7 +32,13 @@ class SkyPainter extends CustomPainter {
       for (final entry in _hitTargets) {
         if ((entry.value - tapPosition!).distance < 30) {
           onObjectTapped(entry.key, entry.value);
-          break;
+          return;
+        }
+      }
+      for (final entry in _constellationHitTargets) {
+        if ((entry.value - tapPosition!).distance < 30) {
+          onConstellationTapped(entry.key, entry.value);
+          return;
         }
       }
     }
@@ -74,9 +88,10 @@ class SkyPainter extends CustomPainter {
         canvas.drawCircle(pos, 2.5, starPaint);
       }
 
-      // Label constellation name near first star
+      // Label constellation name near first star and register as hit target
       if (positions.isNotEmpty && positions[0] != null) {
         _drawLabel(canvas, c.name, positions[0]!, labelStyle);
+        _constellationHitTargets.add(MapEntry(c, positions[0]!));
       }
     }
   }

@@ -1,0 +1,189 @@
+{
+    "_comment_planets": "RA/Dec are approximate positions for March 2026 (source: VSOP87 simplified ephemeris). Sun and Moon positions are ignored at runtime — they are computed dynamically from the current date in sky_provider.dart.",
+    "planets": [
+        { "name": "Mercury", "symbol": "☿", "description": "Smallest planet. Closest to the Sun. No atmosphere.",          "mass": "3.3 × 10²³ kg",  "ra": 2.0,   "dec":  1.5  },
+        { "name": "Venus",   "symbol": "♀", "description": "Hottest planet. Dense CO₂ atmosphere.",                        "mass": "4.87 × 10²⁴ kg", "ra": 318.0, "dec": -15.0 },
+        { "name": "Mars",    "symbol": "♂", "description": "The Red Planet. Has the tallest volcano in the solar system.", "mass": "6.39 × 10²³ kg", "ra": 108.0, "dec":  24.5 },
+        { "name": "Jupiter", "symbol": "♃", "description": "Largest planet. Has a Great Red Spot storm.",                  "mass": "1.9 × 10²⁷ kg",  "ra": 52.0,  "dec":  19.0 },
+        { "name": "Saturn",  "symbol": "♄", "description": "Has spectacular ring system.",                                 "mass": "5.68 × 10²⁶ kg", "ra": 345.0, "dec": -8.0  },
+        { "name": "Uranus",  "symbol": "♅", "description": "Rotates on its side. Ice giant.",                              "mass": "8.68 × 10²⁵ kg", "ra": 50.0,  "dec":  19.0 },
+        { "name": "Neptune", "symbol": "♆", "description": "Farthest planet. Strongest winds in solar system.",            "mass": "1.02 × 10²⁶ kg", "ra": 358.0, "dec": -1.0  },
+        { "name": "Pluto",   "symbol": "♇", "description": "Dwarf planet in the Kuiper Belt. Formerly the 9th planet.",   "mass": "1.31 × 10²² kg", "ra": 300.0, "dec": -22.0 }
+    ],
+    "special": [
+        { "name": "Sun",  "symbol": "☀", "description": "Our star. Surface temp ~5,500 °C.", "mass": "1.989 × 10³⁰ kg", "ra": 0.0, "dec": 0.0 },
+        { "name": "Moon", "symbol": "🌕", "description": "Earth's only natural satellite.",   "mass": "7.35 × 10²² kg",  "ra": 0.0, "dec": 0.0 }
+    ],
+    "constellations": [
+        {
+            "name": "Orion",
+            "description": "The Hunter. One of the most recognizable constellations.",
+            "stars": [
+                {"name": "Betelgeuse", "ra": 88.8, "dec":  7.4},
+                {"name": "Rigel",      "ra": 78.6, "dec": -8.2},
+                {"name": "Bellatrix",  "ra": 81.3, "dec":  6.3},
+                {"name": "Mintaka",    "ra": 83.0, "dec": -0.3},
+                {"name": "Alnilam",    "ra": 84.1, "dec": -1.2},
+                {"name": "Alnitak",    "ra": 85.2, "dec": -1.9}
+            ],
+            "lines": [[0,2],[2,3],[3,4],[4,5],[1,3],[0,1]]
+        },
+        {
+            "name": "Ursa Major",
+            "description": "The Great Bear. Contains the Big Dipper.",
+            "stars": [
+                {"name": "Dubhe",  "ra": 165.0, "dec": 62.0},
+                {"name": "Merak",  "ra": 165.5, "dec": 56.4},
+                {"name": "Phecda", "ra": 178.5, "dec": 53.7},
+                {"name": "Megrez", "ra": 183.9, "dec": 57.0},
+                {"name": "Alioth", "ra": 193.5, "dec": 55.9},
+                {"name": "Mizar",  "ra": 200.9, "dec": 54.9},
+                {"name": "Alkaid", "ra": 206.9, "dec": 49.3}
+            ],
+            "lines": [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6]]
+        },
+        {
+            "name": "Cassiopeia",
+            "description": "The Queen. W-shaped constellation near the North Star.",
+            "stars": [
+                {"name": "Schedar",   "ra": 10.1, "dec": 56.5},
+                {"name": "Caph",      "ra":  2.3, "dec": 59.1},
+                {"name": "Gamma Cas", "ra": 14.2, "dec": 60.7},
+                {"name": "Ruchbah",   "ra": 21.5, "dec": 60.2},
+                {"name": "Segin",     "ra": 28.6, "dec": 63.7}
+            ],
+            "lines": [[0,1],[0,2],[2,3],[3,4]]
+        },
+        {
+            "name": "Aries",
+            "description": "The Ram. First sign of the zodiac.",
+            "stars": [
+                {"name": "Hamal",    "ra": 31.8, "dec": 23.5},
+                {"name": "Sheratan", "ra": 28.7, "dec": 20.8},
+                {"name": "Mesarthim","ra": 28.4, "dec": 19.9}
+            ],
+            "lines": [[0,1],[1,2]]
+        },
+        {
+            "name": "Taurus",
+            "description": "The Bull. Contains the Pleiades star cluster.",
+            "stars": [
+                {"name": "Aldebaran", "ra": 68.9, "dec": 16.5},
+                {"name": "Elnath",    "ra": 81.6, "dec": 28.6},
+                {"name": "Alcyone",   "ra": 56.9, "dec": 24.1},
+                {"name": "Zeta Tau",  "ra": 84.4, "dec": 21.1}
+            ],
+            "lines": [[0,1],[0,2],[0,3]]
+        },
+        {
+            "name": "Gemini",
+            "description": "The Twins. Contains bright stars Castor and Pollux.",
+            "stars": [
+                {"name": "Castor", "ra": 113.6, "dec": 31.9},
+                {"name": "Pollux", "ra": 116.3, "dec": 28.0},
+                {"name": "Alhena", "ra":  99.4, "dec": 16.4},
+                {"name": "Wasat",  "ra": 110.0, "dec": 21.9}
+            ],
+            "lines": [[0,1],[0,2],[0,3],[1,3]]
+        },
+        {
+            "name": "Cancer",
+            "description": "The Crab. Faint but contains the Beehive Cluster.",
+            "stars": [
+                {"name": "Acubens",   "ra": 131.2, "dec": 11.9},
+                {"name": "Al Tarf",   "ra": 124.1, "dec":  9.2},
+                {"name": "Asellus B", "ra": 130.8, "dec": 21.5},
+                {"name": "Asellus A", "ra": 129.6, "dec": 20.0}
+            ],
+            "lines": [[0,1],[0,2],[2,3],[1,3]]
+        },
+        {
+            "name": "Leo",
+            "description": "The Lion. Contains the bright star Regulus.",
+            "stars": [
+                {"name": "Regulus",  "ra": 152.1, "dec": 11.9},
+                {"name": "Denebola", "ra": 177.3, "dec": 14.6},
+                {"name": "Algieba",  "ra": 154.9, "dec": 19.8},
+                {"name": "Zosma",    "ra": 168.5, "dec": 20.5},
+                {"name": "Eta Leo",  "ra": 148.0, "dec": 16.8}
+            ],
+            "lines": [[0,2],[2,4],[4,0],[2,3],[3,1]]
+        },
+        {
+            "name": "Virgo",
+            "description": "The Maiden. Contains the bright star Spica.",
+            "stars": [
+                {"name": "Spica",       "ra": 201.3, "dec": -11.2},
+                {"name": "Porrima",     "ra": 190.4, "dec":  -1.4},
+                {"name": "Vindemiatrix","ra": 195.5, "dec":  10.9},
+                {"name": "Zaniah",      "ra": 186.0, "dec":  -0.7}
+            ],
+            "lines": [[0,1],[1,2],[1,3]]
+        },
+        {
+            "name": "Libra",
+            "description": "The Scales. The only zodiac sign representing an object, not a creature.",
+            "stars": [
+                {"name": "Zubenelgenubi",  "ra": 222.7, "dec": -16.0},
+                {"name": "Zubeneschamali", "ra": 229.2, "dec":  -9.4},
+                {"name": "Brachium",       "ra": 226.0, "dec": -25.3}
+            ],
+            "lines": [[0,1],[0,2]]
+        },
+        {
+            "name": "Scorpius",
+            "description": "The Scorpion. Contains the red supergiant Antares.",
+            "stars": [
+                {"name": "Antares",  "ra": 247.4, "dec": -26.4},
+                {"name": "Graffias", "ra": 241.4, "dec": -19.8},
+                {"name": "Dschubba", "ra": 240.1, "dec": -22.6},
+                {"name": "Sargas",   "ra": 264.3, "dec": -43.0},
+                {"name": "Shaula",   "ra": 263.4, "dec": -37.1}
+            ],
+            "lines": [[0,1],[0,2],[0,3],[3,4]]
+        },
+        {
+            "name": "Sagittarius",
+            "description": "The Archer. Points toward the center of the Milky Way.",
+            "stars": [
+                {"name": "Kaus Australis", "ra": 276.0, "dec": -34.4},
+                {"name": "Nunki",          "ra": 283.8, "dec": -26.3},
+                {"name": "Kaus Media",     "ra": 275.2, "dec": -29.8},
+                {"name": "Kaus Borealis",  "ra": 274.4, "dec": -25.4}
+            ],
+            "lines": [[0,2],[2,3],[2,1]]
+        },
+        {
+            "name": "Capricornus",
+            "description": "The Sea Goat. An ancient zodiac constellation.",
+            "stars": [
+                {"name": "Deneb Algedi", "ra": 326.8, "dec": -16.1},
+                {"name": "Dabih",        "ra": 305.3, "dec": -14.8},
+                {"name": "Nashira",      "ra": 325.0, "dec": -16.7}
+            ],
+            "lines": [[0,1],[0,2]]
+        },
+        {
+            "name": "Aquarius",
+            "description": "The Water Bearer. One of the oldest constellations.",
+            "stars": [
+                {"name": "Sadalsuud",  "ra": 322.0, "dec":  -5.6},
+                {"name": "Sadalmelik", "ra": 331.4, "dec":  -0.3},
+                {"name": "Sadachbia",  "ra": 335.4, "dec":  -1.4},
+                {"name": "Skat",       "ra": 340.9, "dec": -15.8}
+            ],
+            "lines": [[0,1],[1,2],[2,3]]
+        },
+        {
+            "name": "Pisces",
+            "description": "The Fish. A faint but large zodiac constellation.",
+            "stars": [
+                {"name": "Eta Psc",   "ra":  22.0, "dec": 15.3},
+                {"name": "Gamma Psc", "ra": 350.7, "dec":  3.3},
+                {"name": "Alrescha",  "ra":  30.5, "dec":  2.8},
+                {"name": "Omega Psc", "ra": 359.5, "dec":  6.9}
+            ],
+            "lines": [[0,2],[2,3],[3,1]]
+        }
+    ]
+}

@@ -26,11 +26,11 @@ Remember to follow best practices for coding and app development, and be sure to
 Possible examples of the app:
 
 <center>
-<img src="./resources/skyMap.01.jpg?raw=true" style = "width: 500px !important; height: 300px !important;"/>
+<img src="https://01.gritlab.ax/api/content/root/01-edu_module/content/sky-map/resources/skyMap.01.jpg?raw=true" style = "width: 500px !important; height: 300px !important;"/>
 </center>
 
 <center>
-<img src="./resources/skyMap.02.png?raw=true" style = "width: 500px !important; height: 300px !important;"/>
+<img src="https://01.gritlab.ax/api/content/root/01-edu_module/content/sky-map/resources/skyMap.02.png?raw=true" style = "width: 500px !important; height: 300px !important;"/>
 </center>
 
 ## Audit

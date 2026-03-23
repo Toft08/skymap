@@ -33,108 +33,33 @@
                 [5,6], [6,1], [1,3]
             ]
         },
-{
-    "name": "Big Dipper",
-    "description": "Part of The Great Bear. The Big Dipper asterism forms its tail and back — seven of the most recognizable stars in the northern sky.",
-    "stars": [
-        {"name": "Dubhe",  "ra": 165.93, "dec": 61.75},
-        {"name": "Merak",  "ra": 165.46, "dec": 56.38},
-        {"name": "Phecda", "ra": 178.46, "dec": 53.69},
-        {"name": "Megrez", "ra": 183.86, "dec": 57.03},
-        {"name": "Alioth", "ra": 193.51, "dec": 55.96},
-        {"name": "Mizar",  "ra": 200.98, "dec": 54.93},
-        {"name": "Alkaid", "ra": 206.89, "dec": 49.31}
-    ],
-    "lines": [[0,1],[1,2],[2,3],[3,0],[3,4],[4,5],[5,6]]
-},
-{
-        "name": "Ursa Minor",
-        "description": "The Little Bear. Contains Polaris, the North Star.",
-        "stars": [
-            {"name": "Polaris",     "ra": 37.95,  "dec": 89.26},
-            {"name": "Yildun",      "ra": 263.05, "dec": 86.59},
-            {"name": "Epsilon UMi", "ra": 248.52, "dec": 82.03},
-            {"name": "Zeta UMi",    "ra": 236.01, "dec": 77.79},
-            {"name": "Eta UMi",     "ra": 257.31, "dec": 75.75},
-            {"name": "Kochab",      "ra": 222.68, "dec": 74.16},
-            {"name": "Pherkad",     "ra": 230.18, "dec": 71.83} 
-        ],
-        "lines": [[0,1],[1,2],[2,3],[3,4],[4,6],[6,5],[5,3]]
-    },
-    {
-        "name": "Taurus",
-        "description": "The Bull. Contains the red eye Aldebaran and the Pleiades.",
-        "stars": [
-            {"name": "Aldebaran", "ra": 68.98, "dec": 16.51},
-            {"name": "Elnath",    "ra": 81.57, "dec": 28.61},
-            {"name": "Alcyone",   "ra": 56.75, "dec": 24.11},
-            {"name": "Zeta Tau",  "ra": 84.41, "dec": 21.14},
-            {"name": "Ain",       "ra": 67.15, "dec": 19.18}
-        ],
-        "lines": [[0,4],[4,2],[0,3],[1,4]]
-    },
-    {
-        "name": "Leo",
-        "description": "The Lion. The front looks like a backward question mark.",
-        "stars": [
-            {"name": "Regulus",  "ra": 152.09, "dec": 11.97},
-            {"name": "Denebola", "ra": 177.26, "dec": 14.57},
-            {"name": "Algieba",  "ra": 154.99, "dec": 19.84},
-            {"name": "Zosma",    "ra": 168.53, "dec": 20.52},
-            {"name": "Adhafera", "ra": 154.17, "dec": 23.42},
-            {"name": "Rasalas",  "ra": 148.01, "dec": 23.75} 
-        ],
-        "lines": [[0,2],[2,4],[4,5],[2,3],[3,1],[0,1]]
-    },
-    {
-        "name": "Scorpius",
-        "description": "The Scorpion. A distinct 'S' shape in the southern sky.",
-        "stars": [
-            {"name": "Antares",  "ra": 247.35, "dec": -26.43},
-            {"name": "Graffias", "ra": 241.27, "dec": -19.80},
-            {"name": "Dschubba", "ra": 240.08, "dec": -22.62},
-            {"name": "Sargas",   "ra": 264.33, "dec": -43.00},
-            {"name": "Shaula",   "ra": 263.40, "dec": -37.10},
-            {"name": "Wei",      "ra": 252.17, "dec": -34.29}
-        ],
-        "lines": [[1,2],[2,0],[0,5],[5,3],[3,4]]
-    },
-    {
-        "name": "Sagittarius",
-        "description": "The Archer. Commonly known as 'The Teapot'.",
-        "stars": [
-            {"name": "Kaus Australis", "ra": 276.04, "dec": -34.38},
-            {"name": "Nunki",          "ra": 283.82, "dec": -26.30},
-            {"name": "Kaus Media",     "ra": 275.22, "dec": -29.83},
-            {"name": "Kaus Borealis",  "ra": 274.45, "dec": -25.42},
-            {"name": "Ascella",        "ra": 285.65, "dec": -29.88},
-            {"name": "Alnasl",         "ra": 271.40, "dec": -30.42}
-        ],
-        "lines": [[5,3],[3,2],[2,0],[0,5],[3,1],[1,4],[4,2]]
-    },
-    {
-        "name": "Gemini",
-        "description": "The Twins. Castor and Pollux are the heads.",
-        "stars": [
-            {"name": "Castor", "ra": 113.65, "dec": 31.88},
-            {"name": "Pollux", "ra": 116.32, "dec": 28.02},
-            {"name": "Alhena", "ra": 99.42,  "dec": 16.39},
-            {"name": "Mebsuta", "ra": 100.98, "dec": 25.13},
-            {"name": "Tejat",   "ra": 94.31,  "dec": 22.51}
-        ],
-        "lines": [[0,3],[3,4],[1,2]]
-    },
-    {
-        "name": "Virgo",
-        "description": "The Maiden. Spica is the only bright star.",
-        "stars": [
-            {"name": "Spica",        "ra": 201.30, "dec": -11.16},
-            {"name": "Porrima",      "ra": 190.45, "dec": -1.45},
-            {"name": "Vindemiatrix", "ra": 195.55, "dec": 10.95},
-            {"name": "Zaniah",       "ra": 185.99, "dec": -0.60},
-            {"name": "Zavijava",     "ra": 177.70, "dec": 1.76}
-        ],
-        "lines": [[4,3],[3,1],[1,0],[1,2]]
-    }
+        {
+            "name": "Big Dipper",
+            "description": "Part of The Great Bear. The Big Dipper asterism forms its tail and back — seven of the most recognizable stars in the northern sky.",
+            "stars": [
+                {"name": "Dubhe",  "ra": 165.93, "dec": 61.75},
+                {"name": "Merak",  "ra": 165.46, "dec": 56.38},
+                {"name": "Phecda", "ra": 178.46, "dec": 53.69},
+                {"name": "Megrez", "ra": 183.86, "dec": 57.03},
+                {"name": "Alioth", "ra": 193.51, "dec": 55.96},
+                {"name": "Mizar",  "ra": 200.98, "dec": 54.93},
+                {"name": "Alkaid", "ra": 206.89, "dec": 49.31}
+            ],
+            "lines": [[0,1],[1,2],[2,3],[3,0],[3,4],[4,5],[5,6]]
+        },
+        {
+            "name": "Ursa Minor",
+            "description": "The Little Bear. Contains Polaris, the North Star.",
+            "stars": [
+                {"name": "Polaris",     "ra": 37.95,  "dec": 89.26},
+                {"name": "Yildun",      "ra": 263.05, "dec": 86.59},
+                {"name": "Epsilon UMi", "ra": 248.52, "dec": 82.03},
+                {"name": "Zeta UMi",    "ra": 236.01, "dec": 77.79},
+                {"name": "Eta UMi",     "ra": 257.31, "dec": 75.75},
+                {"name": "Kochab",      "ra": 222.68, "dec": 74.16},
+                {"name": "Pherkad",     "ra": 230.18, "dec": 71.83} 
+            ],
+            "lines": [[0,1],[1,2],[2,3],[3,4],[4,6],[6,5],[5,3]]
+        }
     ]
 }

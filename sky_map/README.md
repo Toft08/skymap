@@ -1,16 +1,38 @@
-# sky_map
+# Sky Map — Flutter app
 
-A new Flutter project.
+Real-time augmented sky map. Displays the Sun, Moon, all 8 planets, and three constellations (Orion, Big Dipper, Ursa Minor) projected onto the screen based on the device's GPS position and physical orientation.
 
-## Getting Started
+## Architecture
 
-This project is a starting point for a Flutter application.
+- **State management** — Provider (`SkyProvider extends ChangeNotifier`)
+- **Sensors** — `flutter_compass` (magnetometer), `sensors_plus` (accelerometer), `geolocator` (GPS)
+- **Astronomy** — [`astronomia`](https://pub.dev/packages/astronomia) package (Meeus algorithms)
+  - Sun: `solar.apparentEquatorial` — nutation + aberration (Ch. 25/27)
+  - Moon: `moonpos.position` + `eclToEq` (Ch. 47)
+  - Planets: `elliptic.position` — VSOP87 with light-time correction (Ch. 33)
+  - Coordinate transform: `astro.eqToHz` — equatorial → horizontal (Ch. 13)
+- **Data** — `assets/celestial_data.json` (static catalogue for stars/constellations; positions for solar-system bodies are computed live)
+- **Rendering** — `CustomPainter` (`SkyPainter`), repainted at 10 Hz
 
-A few resources to get you started if this is your first Flutter project:
+## Project structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+lib/
+  main.dart                 # App entry point, Provider setup
+  models/celestial_object.dart
+  providers/sky_provider.dart   # All sensor + astronomy logic
+  screens/sky_screen.dart       # UI, tap-to-inspect dialogs
+  widgets/sky_painter.dart      # Canvas rendering
+assets/
+  celestial_data.json
+test/
+  widget_test.dart
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Running
+
+```bash
+flutter pub get
+flutter run          # requires a physical device for compass/GPS
+flutter test         # unit + widget tests
+```

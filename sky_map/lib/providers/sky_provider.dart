@@ -55,6 +55,14 @@ class SkyProvider extends ChangeNotifier {
     _getLocation();
   }
 
+  /// Test-only constructor: skips sensor/GPS/data initialisation so that the
+  /// class can be instantiated in unit tests without platform channels.
+  SkyProvider.forTest();
+
+  /// Loads celestial data from the asset bundle. Call this in tests after
+  /// [SkyProvider.forTest()] to populate [objects] and [constellations].
+  Future<void> loadDataForTest() => _loadData();
+
   // ─── Data ──────────────────────────────────────────────────────────────────
 
   Future<void> _loadData() async {

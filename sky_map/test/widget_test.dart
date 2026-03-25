@@ -1,30 +1,90 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:sky_map/main.dart';
+import 'package:provider/provider.dart';
+import 'package:sky_map/models/celestial_object.dart';
+import 'package:sky_map/providers/sky_provider.dart';
+import 'package:sky_map/screens/sky_screen.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  // ── Unit: model ────────────────────────────────────────────────────────────
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('CelestialObject stores all fields correctly', () {
+    final obj = CelestialObject(
+      name: 'Mars',
+      symbol: '♂',
+      description: 'The red planet.',
+      mass: '6.39 × 10²³ kg',
+      ra: 123.4,
+      dec: -5.6,
+      type: ObjectType.planet,
+    );
+    expect(obj.name, 'Mars');
+    expect(obj.type, ObjectType.planet);
+    expect(obj.ra, closeTo(123.4, 0.001));
+    expect(obj.dec, closeTo(-5.6, 0.001));
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test('Constellation stores stars and lines correctly', () {
+    final star = ConstellationStar(name: 'Betelgeuse', ra: 88.79, dec: 7.41);
+    final c = Constellation(
+      name: 'Orion',
+      description: 'The hunter.',
+      stars: [star],
+      lines: [
+        [0, 0],
+      ],
+    );
+    expect(c.name, 'Orion');
+    expect(c.stars.first.name, 'Betelgeuse');
+    expect(c.lines.first, [0, 0]);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  // ── Unit: provider data loading ────────────────────────────────────────────
+
+  testWidgets(
+    'SkyProvider loads Sun, Moon, all 7 planets and ≥3 constellations',
+    (WidgetTester tester) async {
+      // testWidgets initialises ServicesBinding so rootBundle works.
+      final provider = SkyProvider.forTest();
+      await provider.loadDataForTest();
+
+      final names = provider.objects.map((o) => o.name).toList();
+      expect(names, contains('Sun'));
+      expect(names, contains('Moon'));
+      for (final planet in [
+        'Mercury',
+        'Venus',
+        'Mars',
+        'Jupiter',
+        'Saturn',
+        'Uranus',
+        'Neptune',
+      ]) {
+        expect(
+          names,
+          contains(planet),
+          reason: '$planet must be present in the object list',
+        );
+      }
+      expect(provider.constellations.length, greaterThanOrEqualTo(3));
+    },
+  );
+
+  // ── Widget: smoke test ─────────────────────────────────────────────────────
+
+  testWidgets('SkyScreen renders a black Scaffold', (
+    WidgetTester tester,
+  ) async {
+    final provider = SkyProvider.forTest();
+
+    await tester.pumpWidget(
+      ChangeNotifierProvider<SkyProvider>.value(
+        value: provider,
+        child: const MaterialApp(home: SkyScreen()),
+      ),
+    );
+
+    final scaffold = tester.widget<Scaffold>(find.byType(Scaffold));
+    expect(scaffold.backgroundColor, Colors.black);
   });
 }

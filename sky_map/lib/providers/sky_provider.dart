@@ -239,7 +239,9 @@ class SkyProvider extends ChangeNotifier {
     final dAlt = objAlt - _deviceAltitude;
     if (dAlt.abs() > vFov / 2) return null;
 
-    final x = screenSize.width / 2 - (dAz / hFov) * screenSize.width;
+    // Positive dAz = object is clockwise (east) of centre → right side of screen.
+    // Positive dAlt = object is above centre → smaller y (top of screen).
+    final x = screenSize.width / 2 + (dAz / hFov) * screenSize.width;
     final y = screenSize.height / 2 - (dAlt / vFov) * screenSize.height;
     return Offset(x, y);
   }
